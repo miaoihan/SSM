@@ -36,7 +36,6 @@ public class Test {
         /**创建能执行映射文件中sql的sqlSession，随方法存在*/
         SqlSession session = factory.openSession();
         try {
-
             /**
              * 映射sql的标识字符串，
              * com.zh.map.userMapper.getUser是userMapper.xml文件中mapper标签的namespace属性的值，
@@ -45,15 +44,24 @@ public class Test {
             String statement = "com.zh.map.userMapper.getUser";//映射sql的标识字符串
             //执行查询返回一个唯一user对象的sql
             /**  XML的方式   */
-            User user = session.selectOne("findById",31);
+            //查
+            User u1 = session.selectOne("findById",92);
+            System.out.println(u1);
             /** 注解的方式 */
             UserMapper userMapper = session.getMapper(UserMapper.class);
             User u2 = userMapper.selectUser(42);
-            User u3 = new User("阿呆","汪待","123");
-            session.insert("save",u3);
+            User u3 = new User("阿aa","汪待","123");
+            //增
+            session.insert("add",u3);
+            //删
+            session.delete("delete",u1);
+            //改
+            User u4 = session.selectOne("findById",78);
+            u4.setDel_status(0);
+            session.update("update",u4);
             /**  必须提交事务，不然无法写入数据库   */
             session.commit();
-            System.out.println(user+"\n"+u2);
+            System.out.println(u2);
         } finally {
             session.close();
         }

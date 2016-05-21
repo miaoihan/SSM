@@ -21,9 +21,6 @@ public class User {
         this.password = password;
     }
 
-    public User(int del_status) {
-        this.del_status = del_status;
-    }
 
     /*********    getter and setter    ********/
     public Integer getId() {
