@@ -65,7 +65,5 @@ public class Test {
         } finally {
             session.close();
         }
-
-
     }
 }
