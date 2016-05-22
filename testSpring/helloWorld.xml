@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 申明beans -->
+    <bean id="helloEng" class="com.zh.spring.HelloEng"></bean>
+    <bean id="helloChina" class="com.zh.spring.HelloChina"></bean>
+
+    <bean id="person" class="com.zh.spring.Person">
+        <!--    通过配置来实现具体要实现的方法    -->
+        <property name="helloWorld" ref="helloEng"></property>
+        <!--<property name="helloWorld" ref="helloChina"></property>-->
+    </bean>
+</beans>
